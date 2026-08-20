@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You Got The Promotion. Nobody Handed You The Manual.</title>
+<meta name="description" content="A field guide for first-time managers — what nobody tells you about leading former peers, delegating, and earning trust in your first 90 days.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #ECE5D3;
+    --paper-2: #E1D8C0;
+    --paper-3: #D9CEB2;
+    --ink: #23241F;
+    --ink-soft: #57564C;
+    --stamp: #A63B2E;
+    --stamp-dark: #8A2F24;
+    --brass: #8C7A45;
+    --green: #4B6B4F;
+    --line: rgba(35,36,31,0.18);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(255,255,255,0.35), transparent 45%),
+      radial-gradient(circle at 80% 60%, rgba(0,0,0,0.04), transparent 40%);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px; margin:0 auto; padding:0 28px;}
+  a{color:inherit;}
+
+  /* Folder tab header */
+  header{
+    border-bottom:1px solid var(--line);
+    padding:18px 0;
+    position:sticky; top:0; z-index:50;
+    background:rgba(236,229,211,0.92);
+    backdrop-filter:blur(6px);
+  }
+  .header-inner{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+  .brand{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px; letter-spacing:0.14em; text-transform:uppercase;
+    display:flex; align-items:center; gap:10px; color:var(--ink);
+  }
+  .brand .tab{
+    background:var(--ink); color:var(--paper);
+    padding:5px 10px; border-radius:2px;
+    font-weight:600;
+  }
+  nav{display:flex; gap:22px; font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.06em; text-transform:uppercase;}
+  nav a{text-decoration:none; color:var(--ink-soft); border-bottom:1px solid transparent; padding-bottom:2px; transition:border-color .2s, color .2s;}
+  nav a:hover{color:var(--ink); border-color:var(--stamp);}
+
+  /* Hero */
+  .hero{padding:88px 0 70px; position:relative;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; letter-spacing:0.16em;
+    text-transform:uppercase; color:var(--stamp-dark); margin:0 0 18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:""; width:26px; height:1px; background:var(--stamp-dark); display:inline-block;}
+  h1{
+    font-family:'Fraunces', serif; font-weight:600; font-size:clamp(34px, 6vw, 60px);
+    line-height:1.06; margin:0 0 26px; letter-spacing:-0.01em; max-width:15ch;
+  }
+  h1 em{font-style:italic; font-weight:500; color:var(--stamp-dark);}
+  .hero-sub{
+    font-size:18px; line-height:1.65; color:var(--ink-soft); max-width:56ch; margin:0 0 34px;
+  }
+  .hero-row{display:flex; align-items:center; gap:22px; flex-wrap:wrap;}
+  .btn{
+    font-family:'IBM Plex Mono', monospace; font-size:13px; letter-spacing:0.08em; text-transform:uppercase;
+    background:var(--ink); color:var(--paper); border:1px solid var(--ink);
+    padding:15px 26px; text-decoration:none; display:inline-block;
+    position:relative; transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{transform:translate(-2px,-2px); box-shadow:4px 4px 0 var(--stamp);}
+  .hero-note{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-soft);}
+
+  /* Stamp graphic */
+  .stamp{
+    position:absolute; border:3px solid var(--stamp); color:var(--stamp);
+    font-family:'IBM Plex Mono', monospace; font-weight:700; text-transform:uppercase;
+    letter-spacing:0.08em; border-radius:6px; padding:10px 16px; text-align:center;
+    transform:rotate(-9deg); opacity:0.9; mix-blend-mode:multiply;
+    box-shadow: inset 0 0 0 2px rgba(166,59,46,0.25);
+  }
+  .stamp small{display:block; font-size:9px; letter-spacing:0.14em; margin-top:2px; font-weight:600;}
+  .hero .stamp{top:60px; right:0; font-size:16px;}
+  @media (max-width:720px){ .hero .stamp{ position:static; margin:22px 0 0; display:inline-block; transform:rotate(-6deg);} }
+
+  section{padding:64px 0; border-top:1px solid var(--line);}
+  h2{
+    font-family:'Fraunces', serif; font-weight:600; font-size:clamp(26px, 3.4vw, 36px);
+    margin:0 0 34px; max-width:20ch;
+  }
+
+  /* Mistakes / performance notes */
+  .notes{display:grid; gap:18px;}
+  .note{
+    background:var(--paper-2); border:1px solid var(--line); border-left:4px solid var(--stamp);
+    padding:20px 22px; display:flex; gap:16px; align-items:flex-start;
+  }
+  .note .num{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--stamp-dark); font-weight:600;
+    padding-top:3px; flex-shrink:0; width:26px;
+  }
+  .note p{margin:0; font-size:16.5px; line-height:1.6; color:var(--ink);}
+  .note p b{font-weight:600;}
+
+  /* Reference check */
+  .ref-body{font-size:17px; line-height:1.75; color:var(--ink-soft); max-width:64ch; margin:0 0 30px;}
+  .ref-body b{color:var(--ink); font-weight:600;}
+  .stamps-row{display:flex; flex-wrap:wrap; gap:14px;}
+  .company-stamp{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; letter-spacing:0.08em; text-transform:uppercase;
+    border:2px solid var(--ink); color:var(--ink); padding:9px 14px; border-radius:3px;
+    transform:rotate(-2deg); background:rgba(255,255,255,0.25);
+  }
+  .company-stamp:nth-child(2n){transform:rotate(1.5deg);}
+  .company-stamp:nth-child(3n){transform:rotate(-1deg);}
+
+  /* Table of contents */
+  .toc{border:1px solid var(--line); background:var(--paper-2);}
+  .toc-item{
+    display:flex; justify-content:space-between; gap:16px; padding:18px 22px;
+    border-bottom:1px solid var(--line); font-size:15.5px;
+  }
+  .toc-item:last-child{border-bottom:none;}
+  .toc-item .t{font-weight:500;}
+  .toc-item .d{font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--ink-soft); white-space:nowrap;}
+
+  /* Testimonials */
+  .sticky-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr)); gap:22px;}
+  .sticky{
+    background:#F1EAD6; border:1px solid var(--line);
+    padding:20px; font-family:'Fraunces', serif; font-style:italic; font-size:16.5px; line-height:1.5;
+    box-shadow:3px 4px 0 rgba(35,36,31,0.08);
+    transform:rotate(-1.4deg);
+  }
+  .sticky:nth-child(2n){transform:rotate(1.2deg);}
+  .sticky:nth-child(3n){transform:rotate(-0.6deg);}
+  .sticky span{
+    display:block; margin-top:14px; font-family:'IBM Plex Mono', monospace; font-style:normal;
+    font-size:11.5px; letter-spacing:0.05em; text-transform:uppercase; color:var(--ink-soft);
+  }
+
+  /* Final CTA */
+  .cta-section{
+    text-align:center; padding:80px 0 90px; border-top:1px solid var(--line);
+    background:var(--paper-2);
+  }
+  .cta-section .stamp{position:static; display:inline-block; font-size:20px; margin-bottom:26px; transform:rotate(-4deg);}
+  .cta-section h2{margin:0 auto 16px; max-width:20ch;}
+  .cta-section p{color:var(--ink-soft); font-size:16px; max-width:48ch; margin:0 auto 32px;}
+
+  footer{
+    padding:34px 0 50px; font-family:'IBM Plex Mono', monospace; font-size:11.5px;
+    color:var(--ink-soft); line-height:1.7; border-top:1px solid var(--line);
+  }
+  footer .disclosure{max-width:64ch;}
+
+  @media (prefers-reduced-motion: reduce){ *{scroll-behavior:auto !important; transition:none !important;} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-inner">
+    <div class="brand"><span class="tab">FILE</span> Employee Transition Notes</div>
+    <nav>
+      <a href="javascript:void(0)" data-scroll="notes">Field Notes</a>
+      <a href="javascript:void(0)" data-scroll="reference">Reference</a>
+      <a href="javascript:void(0)" data-scroll="inside">What's Inside</a>
+      <a href="javascript:void(0)" data-scroll="reviews">Reviews</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap" style="position:relative;">
+    <p class="eyebrow">Memorandum · Re: your new title</p>
+    <h1>You got the promotion.<br>Nobody handed you <em>the manual.</em></h1>
+    <p class="hero-sub">One day you're recognised for your own work. The next, you're expected to lead the people who used to be your peers — earn their trust, delegate, and deliver, with almost no training on how. This is the manual nobody gave you.</p>
+    <div class="hero-row">
+      <a class="btn" href="https://www.udemy.com/course/excellence-in-leadership-y/?referralCode=6DAC01F2BBF4B1CBAE9E" target="_blank" rel="noopener">Read the manual →</a>
+      <span class="hero-note">6 hrs · self-assessment + real case studies</span>
+    </div>
+    <div class="hero-row" style="margin-top:16px;">
+      <span class="company-stamp">Listed on Udemy</span>
+      <span class="company-stamp">An Enrichmentors course</span>
+    </div>
+    <div class="stamp">Approved<small>for first-time leads</small></div>
+  </div>
+</section>
+
+<section id="notes">
+  <div class="wrap">
+    <p class="eyebrow">Performance notes</p>
+    <h2>Common mistakes in the first 90 days</h2>
+    <div class="notes">
+      <div class="note"><span class="num">01</span><p><b>Staying everyone's friend</b> instead of earning respect as a leader. The team you used to sit with now needs you to make calls, not keep the peace.</p></div>
+      <div class="note"><span class="num">02</span><p><b>Doing the work yourself</b> instead of learning to delegate. What made you good as an individual contributor is the exact thing that will burn you out as a manager.</p></div>
+      <div class="note"><span class="num">03</span><p><b>Avoiding the hard conversation</b> until it becomes a bigger problem. Feedback delayed is trust delayed — and it compounds the wrong way.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="reference">
+  <div class="wrap">
+    <p class="eyebrow">Reference check</p>
+    <h2>Taught by someone who's actually done it</h2>
+    <p class="ref-body"><b>Arun Singhal</b> — B.Tech, MBA (IIM Bangalore, 1981). Led teams for 26 years across sales, marketing and operations, rising from Area Sales Manager to Managing Director. Later served as faculty at IIM Udaipur, coaching leaders at organisations including Bayer India, Cello, and Volkswagen India.</p>
+    <div class="stamps-row">
+      <span class="company-stamp">Unilever</span>
+      <span class="company-stamp">Johnson &amp; Johnson</span>
+      <span class="company-stamp">Danone</span>
+      <span class="company-stamp">IIM Udaipur</span>
+    </div>
+  </div>
+</section>
+
+<section id="inside">
+  <div class="wrap">
+    <p class="eyebrow">Training manual</p>
+    <h2>What's inside</h2>
+    <div class="toc">
+      <div class="toc-item"><span class="t">Leadership Self-Assessment — know exactly what to work on</span><span class="d">20 min</span></div>
+      <div class="toc-item"><span class="t">Leadership Styles — autocratic to situational, Goleman's six</span><span class="d">35 min</span></div>
+      <div class="toc-item"><span class="t">What Excellence in Leadership Actually Looks Like</span><span class="d">30 min</span></div>
+      <div class="toc-item"><span class="t">How to Attain It — ownership, standards, decisiveness</span><span class="d">2 hr 1 min</span></div>
+      <div class="toc-item"><span class="t">Leading Remote &amp; Cross-Functional Teams</span><span class="d">76 min</span></div>
+      <div class="toc-item"><span class="t">Your Personal Leadership Improvement Plan</span><span class="d">25 min</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <p class="eyebrow">Attached notes</p>
+    <h2>What people who took it are saying</h2>
+    <div class="sticky-grid">
+      <div class="sticky">"This course is very detailed, and that helps me a lot."<span>— verified student</span></div>
+      <div class="sticky">"The topic being delivered in smaller chunks is indeed very effective."<span>— verified student</span></div>
+      <div class="sticky">"Amazing course content from an experienced professional."<span>— verified student</span></div>
+      <div class="sticky">"It's a good course with structured, well-referenced information."<span>— verified student</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="wrap">
+    <div class="stamp">Approved<small>for enrollment</small></div>
+    <h2>Your next assignment</h2>
+    <p>29,000+ people have already made this jump. The self-assessment alone takes 20 minutes and tells you exactly where to start.</p>
+    <div style="margin-bottom:26px;">
+      <span class="company-stamp">Listed on Udemy</span>
+      <span class="company-stamp">An Enrichmentors course</span>
+    </div>
+    <a class="btn" href="https://www.udemy.com/course/excellence-in-leadership-y/?referralCode=6DAC01F2BBF4B1CBAE9E" target="_blank" rel="noopener">Start the course →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap disclosure">
+    Employee Transition Notes · A field guide for first-time managers.
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('[data-scroll]').forEach(function(link){
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      var target = document.getElementById(link.getAttribute('data-scroll'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
